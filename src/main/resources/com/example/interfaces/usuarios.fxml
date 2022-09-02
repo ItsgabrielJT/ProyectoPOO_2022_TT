@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #375fa1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.Usuarios">
+   <children>
+      <AnchorPane layoutX="505.0" prefHeight="400.0" prefWidth="95.0" style="-fx-background-color: #d1ede4;" />
+      <Label layoutX="225.0" layoutY="21.0" text="Usuarios" textFill="#f8f6f6">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="37.0" layoutY="147.0" mnemonicParsing="false" text="Agregar usuario">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="35.0" layoutY="74.0" text="Agregar un usuario" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="25.0" layoutY="99.0" prefHeight="25.0" prefWidth="109.0" promptText="Ingresa nombre">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="144.0" layoutY="99.0" prefHeight="25.0" prefWidth="109.0" promptText="Ingresa apellido">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="265.0" layoutY="99.0" prefHeight="25.0" prefWidth="95.0" promptText="Teléfono">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="380.0" layoutY="99.0" promptText="Correo electrónio">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextField>
+      <TableView layoutX="27.0" layoutY="186.0" prefHeight="200.0" prefWidth="519.0">
+        <columns>
+          <TableColumn prefWidth="47.0" text="Id" />
+          <TableColumn prefWidth="95.0" text="Nombre" />
+            <TableColumn prefWidth="83.0" text="Apellido" />
+            <TableColumn prefWidth="75.0" text="Teléfono" />
+            <TableColumn prefWidth="158.0" text="Correo" />
+            <TableColumn prefWidth="60.0" text="Eliminar" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
