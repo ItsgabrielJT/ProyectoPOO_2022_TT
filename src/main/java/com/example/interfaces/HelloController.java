@@ -6,14 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 
-public class HelloController implements Initializable {
+public class HelloController {
 
-    @FXML
-    private ImageView fondoImg;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fondoImg.setVisible(true);
-    }
 
 }

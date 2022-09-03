@@ -1,62 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Reflection?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.HelloController">
+<AnchorPane blendMode="DARKEN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" styleClass="anchorpane_background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.HelloController">
    <children>
-      <ImageView fx:id="fondoImg" fitHeight="610.0" fitWidth="601.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/fondo1.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="440.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/iconoadministrador.png" />
-         </image></ImageView>
-      <Label layoutX="101.0" layoutY="50.0" text="EcoPharmacy" textAlignment="CENTER" textFill="#181b46" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="System Bold" size="65.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/iconpharmacy.png" />
-         </image>
-         <effect>
-            <Reflection bottomOpacity="0.24" fraction="0.92" topOffset="0.4" topOpacity="0.11" />
-         </effect>
-      </ImageView>
-      <Label layoutX="172.0" layoutY="300.0" text="Seleccione un usuario">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="94.0" fitWidth="95.0" layoutX="63.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/iconocaja.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="132.0" layoutX="234.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/iconobodega.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="86.0" layoutY="405.0" text="Cajero">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Label>
-      <Label layoutX="261.0" layoutY="407.0" text="Bodeguero">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Label>
-      <Label layoutX="438.0" layoutY="407.0" text="Administrador">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Label>
+      <Pane layoutY="-1.0" opacity="0.04" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" />
+      <HBox prefHeight="100.0" prefWidth="600.0" translateY="500.0">
+         <children>
+            <Label blendMode="DARKEN" text="Cajero" textFill="#106349" translateX="91.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="DARKEN" text="Bodega" textFill="#106349" translateX="185.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="DARKEN" text="Usuarios" textFill="#106349" translateX="273.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="94.0" prefWidth="610.0" text="EcoPharmacy" textAlignment="CENTER" textFill="#155e59" textOverrun="WORD_ELLIPSIS" translateY="50.0">
+               <font>
+                  <Font name="System Bold" size="65.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="604.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" translateX="216.0" translateY="50.0">
+               <image>
+                  <Image url="@assets/iconpharmacy.png" />
+               </image>
+               <effect>
+                  <Reflection bottomOpacity="0.24" fraction="0.92" topOffset="0.4" topOpacity="0.11" />
+               </effect>
+            </ImageView>
+            <Label alignment="TOP_CENTER" blendMode="MULTIPLY" contentDisplay="TOP" prefHeight="94.0" prefWidth="610.0" text="Selecione una opcion" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" translateY="80.0">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="126.0" prefWidth="600.0" translateY="390.0">
+         <children>
+            <ImageView fitHeight="94.0" fitWidth="95.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" translateX="-60.0">
+               <image>
+                  <Image url="@assets/iconocaja.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="125.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="20.0">
+               <image>
+                  <Image url="@assets/iconobodega.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="94.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+               <image>
+                  <Image url="@assets/iconoadministrador.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
+   <effect>
+      <Glow />
+   </effect>
 </AnchorPane>
