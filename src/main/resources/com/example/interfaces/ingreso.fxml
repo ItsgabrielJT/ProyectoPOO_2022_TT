@@ -1,51 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.Ingreso">
+<AnchorPane prefHeight="402.0" prefWidth="672.0" style="-fx-background-color: #375fa1;" styleClass="anchorpane_background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="402.0" prefWidth="140.0" style="-fx-background-color: #8bd160;" />
-      <AnchorPane layoutX="64.0" prefHeight="402.0" prefWidth="216.0" style="-fx-background-color: #375fa1;">
+      <Pane layoutX="268.0" layoutY="1.0" opacity="0.22" prefHeight="410.0" prefWidth="406.0" style="-fx-background-color: #375fa1;">
          <children>
-            <Label layoutX="52.0" layoutY="103.0" prefHeight="34.0" prefWidth="140.0" text="INICIA SESIÓN" textFill="WHITE">
+            <Label alignment="TOP_CENTER" layoutY="93.0" prefHeight="70.0" prefWidth="354.0" text="DE TODAS LAS" textFill="#7d9470">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutY="161.0" prefHeight="70.0" prefWidth="354.0" text="ENFERMADES" textFill="#12965d">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="53.0" layoutY="23.0" prefHeight="60.0" prefWidth="255.0" text="LIBERATE" textFill="#37790e">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Pane layoutX="119.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </Pane>
+      <AnchorPane layoutX="-22.0" prefHeight="410.0" prefWidth="318.0" style="-fx-background-color: #375fa1; -fx-background-radius: 30;">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="89.0" layoutY="132.0" prefHeight="34.0" prefWidth="140.0" text="INICIA SESIÓN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="38.0" layoutY="154.0" promptText="Ingresa tu usuario">
+            <TextField layoutX="48.0" layoutY="174.0" prefHeight="26.0" prefWidth="221.0" promptText="Ingresa tu usuario" style="-fx-background-radius: 40;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="38.0" layoutY="189.0" promptText="Ingresa tu contraseña">
+            <PasswordField layoutX="48.0" layoutY="216.0" prefHeight="26.0" prefWidth="221.0" promptText="Ingresa tu contraseña" style="-fx-background-radius: 40;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </PasswordField>
-            <Button layoutX="52.0" layoutY="232.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Iniciar">
+            <Button layoutX="48.0" layoutY="259.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="221.0" style="-fx-background-color: #8bd160; -fx-background-radius: 40;" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label layoutX="48.0" layoutY="308.0" prefHeight="34.0" prefWidth="179.0" text="Haz olvidado tu cobtraseña ?" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="59.0" prefHeight="0.0" prefWidth="148.0" text="EcoPharmacy" textFill="#8bd160">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="84.0" fitWidth="66.0" layoutX="209.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/iconpharmacy.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-      <ImageView fitHeight="451.0" fitWidth="401.0" layoutX="280.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/C:/Users/santiago/Downloads/fondo1.jpg" />
-         </image></ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="395.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@//C:/Users/santiago/Downloads/iconpharmacy.png" />
-         </image>
-         <effect>
-            <Glow level="0.43" />
-         </effect></ImageView>
-      <Label layoutX="327.0" layoutY="55.0" text="EcoPharmacy">
-         <font>
-            <Font name="System Bold" size="49.0" />
-         </font></Label>
    </children>
 </AnchorPane>
