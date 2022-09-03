@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@//C:/Users/santiago/Downloads/fondo1.jpg" />
+            <Image url="@../../../../java/assets/fondo1.jpg" />
          </image>
          <effect>
             <Glow level="0.54" />
@@ -23,7 +23,7 @@
       </Label>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@//C:/Users/santiago/Downloads/iconpharmacy.png" />
+            <Image url="@../../../../java/assets/iconpharmacy.png" />
          </image>
          <effect>
             <Reflection bottomOpacity="0.24" fraction="0.92" topOffset="0.4" topOpacity="0.11" />
@@ -36,12 +36,12 @@
       </Label>
       <ImageView fitHeight="94.0" fitWidth="95.0" layoutX="63.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/C:/Users/santiago/Downloads/iconocaja.png" />
+            <Image url="@../../../../java/assets/iconocaja.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="132.0" layoutX="234.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@//C:/Users/santiago/Downloads/iconobodega.png" />
+            <Image url="@../../../../java/assets/iconobodega.png" />
          </image>
       </ImageView>
       <Label layoutX="86.0" layoutY="405.0" text="Cajero">
@@ -58,7 +58,7 @@
          </font></Label>
       <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="427.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@//C:/Users/santiago/Downloads/iconoadministrador.png" />
+            <Image url="@../../../../java/assets/iconoadministrador.png" />
          </image></ImageView>
    </children>
 </AnchorPane>
