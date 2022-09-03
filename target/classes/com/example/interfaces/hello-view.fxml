@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.HelloController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fondoImg" fitHeight="610.0" fitWidth="601.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../java/assets/fondo1.jpg" />
          </image>
-         <effect>
-            <Glow level="0.54" />
-         </effect>
       </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="440.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/assets/iconoadministrador.png" />
+         </image></ImageView>
       <Label layoutX="101.0" layoutY="50.0" text="EcoPharmacy" textAlignment="CENTER" textFill="#181b46" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="System Bold" size="65.0" />
@@ -56,9 +58,5 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="427.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/assets/iconoadministrador.png" />
-         </image></ImageView>
    </children>
 </AnchorPane>

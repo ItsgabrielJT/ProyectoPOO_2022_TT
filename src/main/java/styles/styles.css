@@ -1,0 +1,4 @@
+.root {
+    -fx-background-image: url("../assets/fondo1.jpg");
+    -fx-background-size: cover;
+}
