@@ -38,8 +38,12 @@ public class LoginController
         stage.setScene(scene);
         stage.setAlwaysOnTop(true);
         controller.setStage(stage);
+        controller.setController(this);
         stage.show();
         this.prymaryStage.close();
     }
 
+    public void show() {
+        prymaryStage.show();
+    }
 }
