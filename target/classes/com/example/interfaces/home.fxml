@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane blendMode="DARKEN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="672.0" style="-fx-background-color: #000000;" styleClass="anchorpane_background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.HomeController">
+   <children>
+      <Pane layoutY="-1.0" opacity="0.04" prefHeight="500.0" prefWidth="672.0" style="-fx-background-color: #000000;" />
+      <HBox prefHeight="50.0" prefWidth="672.0" translateX="35.0" translateY="440.0">
+         <children>
+            <Label blendMode="DARKEN" text="Cajero" textFill="#106349" translateX="91.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="DARKEN" text="Bodega" textFill="#106349" translateX="195.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label blendMode="DARKEN" text="Usuarios" textFill="#106349" translateX="273.0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="1.0" layoutY="-1.0" prefHeight="500.0" prefWidth="672.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="94.0" prefWidth="610.0" text="EcoPharmacy" textAlignment="CENTER" textFill="#155e59" textOverrun="WORD_ELLIPSIS" translateX="35.0" translateY="30.0">
+               <font>
+                  <Font name="System Bold" size="65.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="604.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" translateX="255.0" translateY="40.0">
+               <image>
+                  <Image url="@assets/iconpharmacy.png" />
+               </image>
+               <effect>
+                  <Reflection bottomOpacity="0.24" fraction="0.92" topOffset="0.4" topOpacity="0.11" />
+               </effect>
+            </ImageView>
+            <Label alignment="TOP_CENTER" blendMode="MULTIPLY" contentDisplay="TOP" prefHeight="94.0" prefWidth="675.0" text="Selecione una opcion" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" translateY="50.0">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="126.0" prefWidth="672.0" translateY="330.0">
+         <children>
+            <ImageView fitHeight="94.0" fitWidth="95.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mostrarVentanaCaja" pickOnBounds="true" preserveRatio="true" translateX="-60.0">
+               <image>
+                  <Image url="@assets/iconocaja.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="125.0" fitWidth="132.0" onMouseClicked="#mostrarVentanaBodega" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="20.0">
+               <image>
+                  <Image url="@assets/iconobodega.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="94.0" fitWidth="124.0" onMouseClicked="#mostrarVentanaUsuario" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+               <image>
+                  <Image url="@assets/iconoadministrador.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+   <effect>
+      <Glow />
+   </effect>
+</AnchorPane>

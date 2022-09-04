@@ -1,76 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d1ede4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.Bodega">
+<AnchorPane prefHeight="400.0" prefWidth="672.0" styleClass="anchorpane_background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaces.BodegaController">
    <children>
-      <AnchorPane prefHeight="408.0" prefWidth="213.0" style="-fx-background-color: #375fa1;">
+      <AnchorPane prefHeight="400.0" prefWidth="263.0" style="-fx-background-color: #8bd160;">
          <children>
-            <Label layoutX="54.0" layoutY="36.0" prefHeight="33.0" prefWidth="106.0" text="Bodega" textFill="#f8f8f8">
+            <Label layoutX="80.0" layoutY="14.0" text="Bodega" textFill="#f8f8f8">
                <font>
-                  <Font name="System Bold" size="26.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <TextField layoutX="33.0" layoutY="93.0" promptText="Ingresa un producto">
+            <TextField layoutX="23.0" layoutY="79.0" prefHeight="26.0" prefWidth="154.0" promptText="Ingresa un producto" style="-fx-background-radius: 40;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></TextField>
+            <Button layoutX="183.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30; -fx-background-color: #51CFE0;" text="Buscar" textFill="#f4f4f4">
+               <effect>
+                  <Bloom threshold="0.95" />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField layoutX="29.0" layoutY="160.0" prefHeight="26.0" prefWidth="210.0" promptText="Detalle" style="-fx-background-radius: 30;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></TextField>
+            <Button alignment="CENTER" layoutX="11.0" layoutY="331.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Agregar " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <TextField alignment="CENTER" layoutX="119.0" layoutY="273.0" prefHeight="26.0" prefWidth="25.0" promptText="0" style="-fx-background-radius: 100; -fx-border-radius: 100;" />
+            <Label layoutX="100.0" layoutY="239.0" text="Cantidad" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER" layoutX="87.0" layoutY="273.0" prefHeight="26.0" prefWidth="25.0" promptText="+" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #51CFE0;" text="+">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="151.0" layoutY="273.0" prefHeight="26.0" prefWidth="25.0" promptText="-" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #5BA0FC;" text="-">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="29.0" layoutY="194.0" prefHeight="26.0" prefWidth="210.0" promptText="Precio unit" style="-fx-background-radius: 30;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Button layoutX="81.0" layoutY="133.0" mnemonicParsing="false" text="Buscar " textFill="#0d0365">
+            <Label layoutX="113.0" layoutY="127.0" text="Datos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="183.0" layoutY="331.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Borrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <ImageView fitHeight="84.0" fitWidth="75.0" layoutX="72.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@//C:/Users/santiago/Downloads/iconoinventario.png" />
-               </image></ImageView>
-         </children></AnchorPane>
-      <Label layoutX="430.0" layoutY="60.0" text="Unidades en stock" textFill="#0d0365">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <TextField layoutX="224.0" layoutY="92.0" prefHeight="25.0" prefWidth="187.0" promptText="Aquí aparecerá tu búsqueda">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font></TextField>
-      <TextField layoutX="432.0" layoutY="92.0" prefHeight="25.0" prefWidth="137.0" promptText="Unidades disponibles">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <CheckBox layoutX="267.0" layoutY="158.0" mnemonicParsing="false" text="Añadir unidades" textFill="#0d0365">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </CheckBox>
-      <CheckBox layoutX="267.0" layoutY="204.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="159.0" text="Eliminar unidades" textFill="#0d0365">
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="94.0" layoutY="331.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Editar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField alignment="CENTER" layoutX="23.0" layoutY="23.0" prefHeight="26.0" prefWidth="41.0" promptText="&lt;--" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #5BA0FC;" text="&lt;--">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="275.0" layoutY="37.0" prefHeight="186.0" prefWidth="389.0">
+        <columns>
+          <TableColumn prefWidth="36.0" text="Id" />
+          <TableColumn minWidth="0.0" prefWidth="164.800048828125" text="Productos en lista" />
+            <TableColumn prefWidth="60.79998779296875" text="Cantidad" />
+            <TableColumn prefWidth="125.59991455078125" text="Fecha" />
+        </columns>
+      </TableView>
+      <Button layoutX="320.0" layoutY="316.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="126.0" style="-fx-background-color: #8bd160; -fx-background-radius: 50;" text="Ingresos" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
-      </CheckBox>
-      <TextField layoutX="432.0" layoutY="156.0" promptText="Ingresa la cantidad">
+      </Button>
+      <Button layoutX="483.0" layoutY="316.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="126.0" style="-fx-background-color: #51CFE0; -fx-background-radius: 50;" text="Salidas" textFill="WHITE">
          <font>
-            <Font name="System Italic" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
-      </TextField>
-      <TextField layoutX="432.0" layoutY="202.0" promptText="Ingresa la cantidad">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <Label layoutX="233.0" layoutY="307.0" text="¿Deseas ver un listado de todos los productos? ">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="239.0" layoutY="332.0" text="Presiona sobre el ícono de la izquierda">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+      </Button>
    </children>
 </AnchorPane>
