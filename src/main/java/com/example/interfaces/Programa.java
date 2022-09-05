@@ -1,5 +1,7 @@
 package com.example.interfaces;
 
+import com.example.interfaces.clases.Usuario;
+import com.example.interfaces.utils.ProcesarDato;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Programa extends Application
 {
@@ -24,7 +27,7 @@ public class Programa extends Application
         stage.setAlwaysOnTop(true);
         stage.show();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
     }
 }

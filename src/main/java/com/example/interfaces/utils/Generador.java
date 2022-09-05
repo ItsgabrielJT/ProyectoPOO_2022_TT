@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class Generador
@@ -26,11 +25,11 @@ public class Generador
     private Usuario us;
     private Object obj;
     private ArrayList<String> datos = new ArrayList<>();
-    private HashMap<Integer, String> accesos = new HashMap<>();
+    private ArrayList<Object> lista = new ArrayList<>();
 
     private static Properties cargarArchivo() throws IOException {
         Properties p = new Properties();
-        InputStream archivo = new FileInputStream("src/main/resources/Sentencias.properties");
+        InputStream archivo = new FileInputStream("src/main/resources/com/example/interfaces/Sentencias.properties");
         p.load(archivo);
         return  p;
     }
@@ -167,10 +166,19 @@ public class Generador
         return sql;
     }
 
+    private String construirQueryConsultar(String str) {
+        String sql = PR.getProperty(str);
+        return sql;
+    }
+
     public Generador(Object obj) throws IOException {
         this.obj = obj;
         PR = cargarArchivo();
         cargarClase();
+    }
+
+    public Generador() throws IOException {
+        PR = cargarArchivo();
     }
 
     public String generarSQlRemove() {
@@ -206,6 +214,17 @@ public class Generador
             return construirQueryModificarStock("stock_ingresos.update");
     }
 
+    public String generarSQLConsult() {
+        if ( obj instanceof  Usuario )
+            return construirQueryConsultar("usuarios.consult");
+        else if ( obj instanceof Producto )
+            return construirQueryConsultar("productos.update");
+        else if ( obj instanceof Stock && (st.getProceso().equals("venta")) )
+            return construirQueryConsultar("stock_salida.update");
+        else
+            return construirQueryConsultar("stock_ingresos.update");
+    }
+
     public void ejecutarInsertarDatos(PreparedStatement i) throws SQLException {
         if (obj instanceof Producto) {
             insertarDatosProductos(i);
@@ -227,6 +246,17 @@ public class Generador
     public void ejecutarActualizarDatos(PreparedStatement i) throws SQLException {
         modificarDatos(i);
         i.executeUpdate();
+    }
+
+    public ArrayList ejecutarConsultarDatos(ResultSet r) throws SQLException {
+        lista.add(new Usuario(
+                r.getInt(1),
+                r.getString(2),
+                r.getString(3),
+                r.getString(4),
+                r.getString(5)
+        ));
+        return lista;
     }
 
     private void modificarDatos(PreparedStatement i) throws SQLException {

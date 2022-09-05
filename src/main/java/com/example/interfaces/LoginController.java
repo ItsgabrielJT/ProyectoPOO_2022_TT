@@ -1,5 +1,7 @@
 package com.example.interfaces;
 
+import com.example.interfaces.clases.Usuario;
+import com.example.interfaces.utils.ProcesarDato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +14,11 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginController
 {
     private Stage prymaryStage;
-    @FXML
-    private Button loginBT;
     @FXML
     private PasswordField passwordTXT;
     @FXML
@@ -39,8 +40,26 @@ public class LoginController
         stage.setAlwaysOnTop(true);
         controller.setStage(stage);
         controller.setController(this);
-        stage.show();
-        this.prymaryStage.close();
+        comprobarUsuario(stage);
+    }
+
+    private void comprobarUsuario(Stage stage) throws IOException {
+        String password = passwordTXT.getText();
+        String nickname = usuarioTXT.getText();
+        Usuario usr = new Usuario();
+        ProcesarDato<Usuario> usuarioProcesarDato = new ProcesarDato<>(usr);
+        usuarioProcesarDato.mostrarDatos();
+        ArrayList<Usuario> lista = usuarioProcesarDato.getLista();
+        for (Usuario u: lista) {
+            if ( (nickname.equals(u.getNickname())) && password.equals(u.getPassword()) ) {
+                stage.show();
+                this.prymaryStage.close();
+            }
+            else {
+                usuarioTXT.setText("Usuario incorrecto");
+                passwordTXT.setText("Contrasena incorrecta");
+            }
+        }
     }
 
     public void show() {
