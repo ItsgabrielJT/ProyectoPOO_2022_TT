@@ -13,72 +13,59 @@
    <children>
       <AnchorPane layoutX="529.0" layoutY="1.0" prefHeight="400.0" prefWidth="142.0" style="-fx-background-color: #8bd160;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Usuarios" textFill="#f8f6f6">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font>
-            </Label>
-            <TextField layoutX="17.0" layoutY="73.0" prefHeight="25.0" prefWidth="109.0" promptText="buscar" style="-fx-background-radius: 40;">
+            <TextField fx:id="accesoTXT" layoutX="16.0" layoutY="67.0" prefHeight="25.0" prefWidth="109.0" promptText="acceso" style="-fx-background-radius: 40; -fx-background-color: #ffffff; -fx-border-radius: 40;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Button layoutX="45.0" layoutY="108.0" mnemonicParsing="false" style="-fx-background-color: #51CFE0; -fx-background-radius: 40;" text="Buscar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button layoutX="44.0" layoutY="246.0" mnemonicParsing="false" style="-fx-background-color: #5BA0FC; -fx-background-radius: 40;" text="Eliminar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button layoutX="39.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: #5BA0FC; -fx-background-radius: 40;" text="Modificar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
          </children></AnchorPane>
-      <Button layoutX="25.0" layoutY="120.0" mnemonicParsing="false" style="-fx-background-color: #51CFE0; -fx-background-radius: 40;" text="Agregar usuario" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Label layoutX="93.0" layoutY="20.0" text="Nuevo Usuario" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Label>
-      <TextField layoutX="24.0" layoutY="69.0" prefHeight="25.0" prefWidth="109.0" promptText="nickname" style="-fx-background-radius: 40;">
+      <TextField fx:id="usuarioTXT" layoutX="24.0" layoutY="69.0" prefHeight="26.0" prefWidth="114.0" promptText="nickname" style="-fx-background-radius: 40; -fx-background-color: #ffffff; -fx-border-radius: 40;">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TableView layoutX="27.0" layoutY="186.0" prefHeight="200.0" prefWidth="476.0">
-        <columns>
-          <TableColumn prefWidth="36.000030517578125" text="Id" />
-          <TableColumn prefWidth="106.39999389648438" text="Nickname" />
-            <TableColumn prefWidth="76.00006103515625" text="Password" />
-            <TableColumn prefWidth="177.60003662109375" text="Email" />
-            <TableColumn prefWidth="78.39996337890625" text="Acceso" />
-        </columns>
-      </TableView>
-      <TextField layoutX="148.0" layoutY="69.0" prefHeight="25.0" prefWidth="109.0" promptText="nickname" style="-fx-background-radius: 40;">
+      <TextField fx:id="passwordTXT" layoutX="153.0" layoutY="68.0" prefHeight="26.0" prefWidth="128.0" promptText="password" style="-fx-background-radius: 40; -fx-background-color: #ffffff; -fx-border-radius: 40;">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TextField layoutX="274.0" layoutY="69.0" prefHeight="25.0" prefWidth="109.0" promptText="nickname" style="-fx-background-radius: 40;">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="395.0" layoutY="69.0" prefHeight="25.0" prefWidth="109.0" promptText="nickname" style="-fx-background-radius: 40;">
+      <TextField fx:id="emailTXT" layoutX="295.0" layoutY="68.0" prefHeight="26.0" prefWidth="222.0" promptText="email" style="-fx-background-radius: 40; -fx-background-color: #ffffff; -fx-border-radius: 40;">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
       <Button layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#mostrarVentanaHome" prefHeight="26.0" prefWidth="52.0" style="-fx-background-radius: 30; -fx-background-color: #5BA0FC;" text="&lt;--" textFill="#f4f4f4">
+         <effect>
+            <Bloom threshold="0.95" />
+         </effect>
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="103.0" layoutY="14.0" text="Usuarios" textFill="#f8f6f6">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaUsuariosFX" layoutX="27.0" layoutY="186.0" prefHeight="200.0" prefWidth="618.0">
+        <columns>
+          <TableColumn fx:id="columnaId" prefWidth="36.000030517578125" text="Id" />
+          <TableColumn fx:id="columnaUsuario" prefWidth="106.39999389648438" text="Nickname" />
+            <TableColumn fx:id="columnaPassword" prefWidth="76.00006103515625" text="Password" />
+            <TableColumn fx:id="columnaEmail" prefWidth="223.20001220703125" text="Email" />
+            <TableColumn fx:id="columnaAcceso" prefWidth="84.800048828125" text="Acceso" />
+            <TableColumn fx:id="columnaAcceso1" prefWidth="84.800048828125" />
+        </columns>
+      </TableView>
+      <Button layoutX="27.0" layoutY="131.0" mnemonicParsing="false" onAction="#agregarUsuario" prefHeight="26.0" prefWidth="52.0" style="-fx-background-radius: 30; -fx-background-color: #5BA0FC;" text="Agr" textFill="#f4f4f4">
+         <effect>
+            <Bloom threshold="0.95" />
+         </effect>
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="99.0" layoutY="131.0" mnemonicParsing="false" onAction="#refrescarTabla" prefHeight="26.0" prefWidth="52.0" style="-fx-background-radius: 30; -fx-background-color: #5BA0FC;" text="Act" textFill="#f4f4f4">
          <effect>
             <Bloom threshold="0.95" />
          </effect>

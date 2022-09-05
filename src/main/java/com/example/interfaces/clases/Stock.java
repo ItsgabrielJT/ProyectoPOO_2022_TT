@@ -8,6 +8,7 @@ public class Stock
     private int usuario = 0;
     private int producto = 0;
     private String proceso;
+    private int cliente = 0;
 
     public Stock(String fecha, int cantidad, int usuario, int proucto, String proceso) {
         this.fecha = fecha;

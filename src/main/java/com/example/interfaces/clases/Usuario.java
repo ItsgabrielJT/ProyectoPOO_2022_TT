@@ -1,15 +1,7 @@
 package com.example.interfaces.clases;
 
-import com.example.interfaces.utils.DataConexion;
-import com.example.interfaces.utils.ProcesarDato;
-
-import javax.sql.ConnectionEvent;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 public class Usuario
 {
@@ -18,7 +10,6 @@ public class Usuario
     private String email;
     private String nickname;
     private String acceso;
-    private ArrayList<Usuario> lista = new ArrayList<>();
 
     public Usuario(int id, String password, String nickname, String email, String acceso) {
         this.password = password;
@@ -27,6 +18,7 @@ public class Usuario
         this.acceso = acceso;
         this.id = id;
     }
+
 
     public Usuario(String password, String email, String nickname, String acceso) {
         this.password = password;
@@ -55,7 +47,7 @@ public class Usuario
         this.acceso = acceso;
     }
 
-    public Usuario() throws IOException {
+    public Usuario() {
     }
 
     public String getPassword() {
@@ -82,7 +74,4 @@ public class Usuario
         this.id = id;
     }
 
-    public ArrayList<Usuario> getLista() {
-        return lista;
-    }
 }

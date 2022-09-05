@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -23,6 +24,9 @@ public class LoginController
     private PasswordField passwordTXT;
     @FXML
     private TextField usuarioTXT;
+    @FXML
+    private Label messageTXT;
+
 
     public void setStage(Stage stage) {
         prymaryStage = stage;
@@ -56,8 +60,9 @@ public class LoginController
                 this.prymaryStage.close();
             }
             else {
-                usuarioTXT.setText("Usuario incorrecto");
-                passwordTXT.setText("Contrasena incorrecta");
+                messageTXT.setText("Usuario o Password incorrectos");
+                usuarioTXT.setText("");
+                passwordTXT.setText("");
             }
         }
     }

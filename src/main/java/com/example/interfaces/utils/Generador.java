@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class Generador
@@ -26,6 +27,7 @@ public class Generador
     private Object obj;
     private ArrayList<String> datos = new ArrayList<>();
     private ArrayList<Object> lista = new ArrayList<>();
+
 
     private static Properties cargarArchivo() throws IOException {
         Properties p = new Properties();
@@ -43,11 +45,38 @@ public class Generador
             st = (Stock) obj;
     }
 
-    private void InsertarNuevosUsuarios() throws SQLException {
+    private void InsertarNuevosUsuarios(String acceso) throws SQLException {
         PreparedStatement p = conn.prepareStatement(construirQueryInsertar("accesos.insertar"));
-        p.setInt(1, 14);
-        p.setInt(2, 2);
+        p.setInt(1, obetnerIdUsuario());
+        p.setInt(2, obetnerIdAcceso(acceso));
         p.executeUpdate();
+    }
+
+    private int obetnerIdUsuario() throws SQLException {
+        datos.clear();
+        PreparedStatement consultar = conn.prepareStatement("SELECT id FROM usuarios");
+        ResultSet result = consultar.executeQuery();
+        while (result.next()) {
+            datos.add(String.valueOf(result.getInt(1)));
+        }
+        int longitud = datos.size();
+        return Integer.parseInt(datos.get(longitud - 1));
+    }
+
+    private int obetnerIdAcceso(String acceso) throws SQLException {
+        datos.clear();
+        PreparedStatement consultar = conn.prepareStatement("SELECT tipo_acceso FROM accesos");
+        ResultSet result = consultar.executeQuery();
+        while (result.next()) {
+            datos.add(result.getString(1));
+        }
+        int id = 0;
+        for (int i = 1; i <= datos.size(); i++) {
+            if (datos.get(i-1).equals(acceso)) {
+                id = i;
+            }
+        }
+        return id;
     }
 
     private void cargarTiposAccesos() throws SQLException {
@@ -230,7 +259,7 @@ public class Generador
             insertarDatosProductos(i);
         } else if (obj instanceof Usuario) {
             insertarDatosUsuario(i);
-            InsertarNuevosUsuarios();
+            InsertarNuevosUsuarios(us.getAcceso());
         } else {
             insertarDatosStock(i);
         }

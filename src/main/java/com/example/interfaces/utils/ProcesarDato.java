@@ -2,8 +2,6 @@ package com.example.interfaces.utils;
 
 
 import com.example.interfaces.Iclases.AcederDato;
-import com.example.interfaces.clases.Usuario;
-
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
