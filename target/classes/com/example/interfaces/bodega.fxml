@@ -107,7 +107,7 @@
             <TableColumn fx:id="columnaFecha" prefWidth="125.59991455078125" text="Fecha" />
         </columns>
       </TableView>
-      <Button layoutX="288.0" layoutY="318.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #51CFE0; -fx-background-radius: 50;" text="Ingresos" textFill="WHITE">
+      <Button layoutX="288.0" layoutY="318.0" mnemonicParsing="false" onAction="#mostrarStockIngreso" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #51CFE0; -fx-background-radius: 50;" text="Ingresos" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -117,7 +117,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="544.0" layoutY="318.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #51CFE0; -fx-background-radius: 50;" text="Salidas" textFill="WHITE">
+      <Button layoutX="544.0" layoutY="318.0" mnemonicParsing="false" onAction="#mostrarStockSalida" prefHeight="46.0" prefWidth="107.0" style="-fx-background-color: #51CFE0; -fx-background-radius: 50;" text="Salidas" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
