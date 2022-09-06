@@ -1,18 +1,27 @@
 package com.example.interfaces;
 
+import com.example.interfaces.clases.Usuario;
+import com.example.interfaces.utils.ProcesarDato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
-public class HomeController
+public class HomeController implements Initializable
 {
+    private ArrayList<Usuario> listaUser = new ArrayList<>();
     private LoginController controller;
     private Stage prymaryStage;
     @FXML
@@ -80,7 +89,37 @@ public class HomeController
         this.controller = controller;
     }
 
+    public void setListaUser(ArrayList<Usuario> listaUser) {
+        this.listaUser = listaUser;
+    }
+
     public void show() {
         prymaryStage.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            comprobarUsuario();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void comprobarUsuario() throws IOException {
+
+        Usuario us = new Usuario();
+        ProcesarDato<Usuario> usuarios = new ProcesarDato<>(us);
+        usuarios.mostrarDatos();
+        listaUser = usuarios.getLista();
+        for (Usuario u: listaUser) {
+            if (u.getAcceso().equals("cajero")) {
+                ImageView img = new ImageView();
+            } else if (u.getAcceso().equals("bodeguero")) {
+
+            } else {
+
+            }
+        }
     }
 }

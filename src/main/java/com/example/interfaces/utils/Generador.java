@@ -1,6 +1,7 @@
 package com.example.interfaces.utils;
 
 
+import com.example.interfaces.clases.Cliente;
 import com.example.interfaces.clases.Producto;
 import com.example.interfaces.clases.Stock;
 import com.example.interfaces.clases.Usuario;
@@ -13,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class Generador
@@ -24,6 +24,7 @@ public class Generador
     private Producto pd;
     private Stock st;
     private Usuario us;
+    private Cliente cl;
     private Object obj;
     private ArrayList<String> datos = new ArrayList<>();
     private ArrayList<Object> lista = new ArrayList<>();
@@ -41,6 +42,8 @@ public class Generador
             pd = (Producto) obj;
         else if ( obj instanceof Usuario )
             us = (Usuario) obj;
+        else if ( obj instanceof Cliente)
+            cl = (Cliente) obj;
         else
             st = (Stock) obj;
     }
@@ -78,16 +81,6 @@ public class Generador
         }
         return id;
     }
-
-    private void cargarTiposAccesos() throws SQLException {
-        PreparedStatement c = conn.prepareStatement("SELECT * FROM accesos");
-        ResultSet f = c.getResultSet();
-        while (f.next()) {
-            System.out.println(f.getInt(1));
-            System.out.println(f.getString(2));
-        }
-    }
-
     private void ejecutarDeleteDatos(int i) throws IOException, SQLException {
         PreparedStatement p = conn.prepareStatement(construirQueryEliminar("acceso.delete", i));
         p.executeUpdate();
@@ -97,6 +90,15 @@ public class Generador
         i.setString(1, pd.getNombre());
         i.setDouble(2, pd.getPrecio());
         i.setInt(3, pd.getCantidad());
+        i.executeUpdate();
+    }
+
+    private void insertarDatosClientes(PreparedStatement i) throws SQLException {
+        i.setString(1, cl.getNombre());
+        i.setString(2, cl.getApellido());
+        i.setString(3, cl.getCedula());
+        i.setString(4, cl.getNumero());
+        i.setString(5, cl.getDireccion());
         i.executeUpdate();
     }
 
@@ -129,69 +131,21 @@ public class Generador
     private String construirQueryModificarUsuario(String str) {
         String sql = PR.getProperty(str);
         datos.clear();
-        if (us.getNickname() != null) {
-            sql += "nickname = ?,";
-            datos.add(us.getNickname());
-        }
-        if (us.getPassword() != null) {
-            sql += "password = ?,";
-            datos.add(us.getPassword());
-        }
-        if (us.getEmail() != null) {
-            sql += "email = ? ";
-            datos.add(us.getEmail());
-        }
-        sql = sql.substring(0, sql.length() - 1);
-        sql += " WHERE id = " + String.valueOf(us.getId());
+        datos.add(us.getNickname());
+        datos.add(us.getPassword());
+        datos.add(us.getEmail());
+        sql += String.valueOf(us.getId());
         return sql;
     }
 
     private String construirQueryModificarProducto(String str) {
         String sql = PR.getProperty(str);
         datos.clear();
-        if (pd.getNombre() != null) {
-            sql += "nombre = ?,";
-            datos.add(pd.getNombre());
-        }
-        if (pd.getPrecio() > 0) {
-            sql += "precio = ?,";
-            datos.add(String.valueOf(pd.getPrecio()));
-        }
-        if (pd.getCantidad() > 0) {
-            sql += "cantidad = ? ";
-            datos.add(String.valueOf(pd.getCantidad()));
-        }
-        sql = sql.substring(0, sql.length() - 1);
-        sql += " WHERE id = " + String.valueOf(pd.getId());
+        datos.add(pd.getNombre());
+        datos.add(String.valueOf(pd.getPrecio()));
+        datos.add(String.valueOf(pd.getCantidad()));
+        sql += String.valueOf(pd.getId());
         System.out.println(sql);
-        return sql;
-    }
-
-    private String construirQueryModificarStock(String str) {
-        String sql = PR.getProperty(str);
-        datos.clear();
-        if (st.getFecha() != null && st.getProceso().equals("ventas")) {
-            sql += "fecha_salida = ?,";
-            datos.add(st.getFecha());
-        }
-        else if (st.getFecha() != null) {
-            sql += "fecha_ingreso = ?,";
-            datos.add(st.getFecha());
-        }
-        if (st.getCantidad() > 0) {
-            sql += "cantidad = ?,";
-            datos.add(String.valueOf(st.getCantidad()));
-        }
-        if (st.getUsuario() > 0) {
-            sql += "usuarios_id = ?,";
-            datos.add(String.valueOf(st.getUsuario()));
-        }
-        if (st.getProducto() > 0) {
-            sql += "productos_id = ? ";
-            datos.add(String.valueOf(st.getProducto()));
-        }
-        sql = sql.substring(0, sql.length() - 1);
-        sql += " WHERE id = " + String.valueOf(st.getId());
         return sql;
     }
 
@@ -226,6 +180,8 @@ public class Generador
             return construirQueryInsertar("productos.insertar");
         else if ( obj instanceof Usuario )
             return construirQueryInsertar("usuarios.insertar");
+        else if (obj instanceof Cliente)
+            return construirQueryInsertar("clientes.insertar");
         else if ( obj instanceof Stock && (st.getProceso().equals("venta")) )
             return construirQueryInsertar("stock_salida.insertar");
         else
@@ -235,19 +191,17 @@ public class Generador
     public String generarSQLUpdate() {
         if ( obj instanceof  Usuario )
             return construirQueryModificarUsuario("usuarios.update");
-        else if ( obj instanceof Producto )
-            return construirQueryModificarProducto("productos.update");
-        else if ( obj instanceof Stock && (st.getProceso().equals("venta")) )
-            return construirQueryModificarStock("stock_salida.update");
         else
-            return construirQueryModificarStock("stock_ingresos.update");
+            return construirQueryModificarProducto("productos.update");
     }
 
     public String generarSQLConsult() {
         if ( obj instanceof  Usuario )
             return construirQueryConsultar("usuarios.consult");
         else if ( obj instanceof Producto )
-            return construirQueryConsultar("productos.update");
+            return construirQueryConsultar("productos.consult");
+        else if ( obj instanceof Cliente )
+            return construirQueryConsultar("clientes.consult");
         else if ( obj instanceof Stock && (st.getProceso().equals("venta")) )
             return construirQueryConsultar("stock_salida.update");
         else
@@ -260,6 +214,8 @@ public class Generador
         } else if (obj instanceof Usuario) {
             insertarDatosUsuario(i);
             InsertarNuevosUsuarios(us.getAcceso());
+        } else if (obj instanceof Cliente) {
+            insertarDatosClientes(i);
         } else {
             insertarDatosStock(i);
         }
@@ -278,12 +234,45 @@ public class Generador
     }
 
     public ArrayList ejecutarConsultarDatos(ResultSet r) throws SQLException {
+        if (obj instanceof Producto) {
+            return ejecutarConsultarDatosProductos(r);
+        } else if (obj instanceof Usuario) {
+            return ejecutarConsultarDatosUsuarios(r);
+        } else if (obj instanceof Cliente) {
+            return ejecutarConsultarDatosClientes(r);
+        } else {
+            return null;
+        }
+    }
+
+    public ArrayList ejecutarConsultarDatosUsuarios(ResultSet r) throws SQLException {
         lista.add(new Usuario(
                 r.getInt(1),
                 r.getString(2),
                 r.getString(3),
                 r.getString(4),
                 r.getString(5)
+        ));
+        return lista;
+    }
+
+    public ArrayList ejecutarConsultarDatosClientes(ResultSet r) throws SQLException {
+        lista.add(new Cliente(
+                r.getInt(1),
+                r.getString(2),
+                r.getString(3),
+                r.getString(4),
+                r.getString(5),
+                r.getString(6)
+        ));
+        return lista;
+    }
+    public ArrayList ejecutarConsultarDatosProductos(ResultSet r) throws SQLException {
+        lista.add(new Producto(
+                r.getInt(1),
+                r.getString(2),
+                r.getDouble(3),
+                r.getInt(4)
         ));
         return lista;
     }

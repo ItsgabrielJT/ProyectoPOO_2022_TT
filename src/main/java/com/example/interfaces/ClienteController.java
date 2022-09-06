@@ -1,16 +1,17 @@
 package com.example.interfaces;
 
+import com.example.interfaces.clases.Cliente;
+import com.example.interfaces.clases.Usuario;
+import com.example.interfaces.utils.ProcesarDato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class ClienteController {
 
@@ -47,6 +48,49 @@ public class ClienteController {
     void mostrarVentanaHome(ActionEvent event) {
         controller.show();
         primaryStage.close();
+    }
+    @FXML
+    void agregarCliente(ActionEvent event) throws IOException {
+        String nombre = nombreBT.getText();
+        String apellido = apellidoBT.getText();
+        String cedula = cedulaTXT.getText();
+        String numero = numeroBT.getText();
+        String direccion = direccionBT.getText();
+        Cliente cliente = new Cliente(nombre, apellido, cedula, numero, direccion);
+        ProcesarDato<Usuario> datos = new ProcesarDato<>(cliente);
+        datos.introducirDatos();
+    }
+    @FXML
+    void vaciarTextos(ActionEvent event) {
+        nombreBT.setText("");
+        apellidoBT.setText("");
+        cedulaTXT.setText("");
+        numeroBT.setText("");
+        direccionBT.setText("");
+        messageTXT.setText("");
+    }
+    @FXML
+    void buscarClientes(ActionEvent event) throws IOException {
+        boolean isExist = false;
+        Cliente cl = new Cliente();
+        ProcesarDato<Cliente> datos = new ProcesarDato<>(cl);
+        datos.mostrarDatos();
+        ArrayList<Cliente> clientes = datos.getLista();
+        for (Cliente c: clientes) {
+            if (c.getCedula().equals(cedulaTXT.getText())) {
+                nombreBT.setText(c.getNombre());
+                apellidoBT.setText(c.getApellido());
+                numeroBT.setText(c.getNumero());
+                direccionBT.setText(c.getDireccion());
+            }
+        }
+        if (isExist) {
+            messageTXT.setText("No existente, quiere agregar ?");
+        }
+    }
+    @FXML
+    void aceptarCliente(ActionEvent event) {
+
     }
 }
 

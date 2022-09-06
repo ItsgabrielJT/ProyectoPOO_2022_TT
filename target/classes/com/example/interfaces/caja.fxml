@@ -18,11 +18,11 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <TextField layoutX="21.0" layoutY="79.0" prefHeight="25.0" prefWidth="141.0" promptText="Ingresa un producto" style="-fx-background-radius: 40;">
+            <TextField fx:id="idTXT" layoutX="21.0" layoutY="79.0" prefHeight="25.0" prefWidth="141.0" promptText="Ingresa un producto" style="-fx-background-radius: 40;">
                <font>
-                  <Font name="System Italic" size="12.0" />
+                  <Font name="System Bold Italic" size="12.0" />
                </font></TextField>
-            <Button layoutX="170.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30; -fx-background-color: #51CFE0;" text="Buscar" textFill="#f4f4f4">
+            <Button layoutX="170.0" layoutY="79.0" mnemonicParsing="false" onAction="#buscarProducto" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30; -fx-background-color: #51CFE0;" text="Buscar" textFill="#f4f4f4">
                <effect>
                   <Bloom threshold="0.95" />
                </effect>
@@ -30,23 +30,23 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField layoutX="29.0" layoutY="161.0" prefHeight="25.0" prefWidth="192.0" promptText="Detalle" style="-fx-background-radius: 30;">
+            <TextField fx:id="nombreTXT" layoutX="29.0" layoutY="161.0" prefHeight="25.0" prefWidth="192.0" promptText="Detalle" style="-fx-background-radius: 30;">
                <font>
-                  <Font name="System Italic" size="12.0" />
+                  <Font name="System Bold Italic" size="12.0" />
                </font></TextField>
-            <Button alignment="CENTER" layoutX="29.0" layoutY="331.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Agregar " textFill="WHITE">
+            <Button alignment="CENTER" layoutX="29.0" layoutY="331.0" mnemonicParsing="false" onAction="#agregarProductoFactura" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Agregar " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <TextField alignment="CENTER" layoutX="112.0" layoutY="273.0" prefHeight="26.0" prefWidth="25.0" promptText="0" style="-fx-background-radius: 100; -fx-border-radius: 100;" />
+            <TextField fx:id="cantidadTXT" alignment="CENTER" layoutX="104.0" layoutY="266.0" prefHeight="39.0" prefWidth="41.0" promptText="0" style="-fx-background-radius: 100; -fx-border-radius: 100;" text="0" />
             <Label layoutX="93.0" layoutY="239.0" text="Cantidad" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="29.0" layoutY="200.0" prefHeight="25.0" prefWidth="192.0" promptText="Precio unit" style="-fx-background-radius: 30;">
+            <TextField fx:id="precioTXT" layoutX="29.0" layoutY="200.0" prefHeight="25.0" prefWidth="192.0" promptText="Precio unit" style="-fx-background-radius: 30;">
                <font>
-                  <Font name="System Italic" size="12.0" />
+                  <Font name="System Bold Italic" size="12.0" />
                </font>
             </TextField>
             <Label layoutX="105.0" layoutY="131.0" text="Datos" textFill="WHITE">
@@ -54,7 +54,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="144.0" layoutY="331.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Borrar" textFill="WHITE">
+            <Button alignment="CENTER" layoutX="144.0" layoutY="331.0" mnemonicParsing="false" onAction="#vaciarTextos" prefHeight="39.0" prefWidth="76.0" style="-fx-background-radius: 40; -fx-background-color: #51CFE0;" text="Borrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="78.0" layoutY="273.0" mnemonicParsing="false" onAction="#mostrarVentanaHome" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 30; -fx-background-color: #5BA0FC;" text="+" textFill="#f4f4f4">
+            <Button layoutX="67.0" layoutY="273.0" mnemonicParsing="false" onAction="#aumentarCantidad" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 30; -fx-background-color: #5BA0FC;" text="+" textFill="#f4f4f4">
                <effect>
                   <Bloom threshold="0.95" />
                </effect>
@@ -75,7 +75,7 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="149.0" layoutY="273.0" mnemonicParsing="false" onAction="#mostrarVentanaHome" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 30; -fx-background-color: #51CFE0;" text="-" textFill="#f4f4f4">
+            <Button layoutX="157.0" layoutY="273.0" mnemonicParsing="false" onAction="#disminuirCantidad" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 30; -fx-background-color: #51CFE0;" text="-" textFill="#f4f4f4">
                <effect>
                   <Bloom threshold="0.95" />
                </effect>

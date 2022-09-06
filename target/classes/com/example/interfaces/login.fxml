@@ -53,7 +53,7 @@
             </ImageView>
             <Label fx:id="messageTXT" layoutX="61.0" layoutY="304.0" prefHeight="34.0" prefWidth="222.0" textFill="#ff7a65">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
          </children></AnchorPane>
