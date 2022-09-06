@@ -60,11 +60,10 @@
       <TableView fx:id="tablaUsuariosFX" layoutX="27.0" layoutY="186.0" prefHeight="200.0" prefWidth="618.0" stylesheets="@tableview.css">
         <columns>
           <TableColumn fx:id="columnaId" prefWidth="36.000030517578125" text="Id" />
-          <TableColumn fx:id="columnaUsuario" prefWidth="106.39999389648438" text="Nickname" />
-            <TableColumn fx:id="columnaPassword" prefWidth="76.00006103515625" text="Password" />
-            <TableColumn fx:id="columnaEmail" prefWidth="223.20001220703125" text="Email" />
-            <TableColumn fx:id="columnaAcceso" prefWidth="84.800048828125" text="Acceso" />
-            <TableColumn fx:id="columnaAcceso1" prefWidth="84.800048828125" />
+          <TableColumn fx:id="columnaUsuario" prefWidth="106.39999389648438" text="Usuario" />
+            <TableColumn fx:id="columnaPassword" prefWidth="76.00006103515625" text="Contraseña" />
+            <TableColumn fx:id="columnaEmail" prefWidth="296.79998779296875" text="Correo" />
+            <TableColumn fx:id="columnaAcceso" prefWidth="99.2000732421875" text="Acceso" />
         </columns>
       </TableView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="34.0" layoutY="120.0" onMouseClicked="#agregarUsuario" pickOnBounds="true" preserveRatio="true">

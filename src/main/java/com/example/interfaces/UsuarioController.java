@@ -1,13 +1,11 @@
 package com.example.interfaces;
 
-import com.example.interfaces.clases.Producto;
 import com.example.interfaces.clases.Usuario;
 import com.example.interfaces.utils.ProcesarDato;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -36,20 +34,20 @@ public class UsuarioController implements Initializable
     @FXML
     private TextField usuarioTXT;
     @FXML
-    private TableColumn<Usuario, String> columnaAcceso;
+    private TableColumn<UsuarioTabla, String> columnaAcceso = new TableColumn<>("Acceso");
     @FXML
-    private TableColumn<Usuario, String> columnaEmail;
+    private TableColumn<UsuarioTabla, String> columnaEmail = new TableColumn<>("Email");
     @FXML
-    private TableColumn<Usuario, Integer> columnaId;
+    private TableColumn<UsuarioTabla, Integer> columnaId = new TableColumn<>("Id");
     @FXML
-    private TableColumn<Usuario, String> columnaPassword;
+    private TableColumn<UsuarioTabla, String> columnaPassword = new TableColumn<>("Contraseña");
     @FXML
-    private TableColumn<Usuario, String> columnaUsuario;
+    private TableColumn<UsuarioTabla, String> columnaUsuario = new TableColumn<>("Nickname");
     @FXML
-    private TableView<Usuario> tablaUsuariosFX;
+    private TableView<UsuarioTabla> tablaUsuariosFX;
     @FXML
     private Label messageTXT;
-    private ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+    private ArrayList<UsuarioTabla> listaUsuarios = new ArrayList<>();
 
     @FXML
     void mostrarVentanaHome(ActionEvent event) {
@@ -64,29 +62,24 @@ public class UsuarioController implements Initializable
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //cargarDatos();
-
+        try {
+            cargarDatos();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void cargarDatos() {
-        columnaId.setCellValueFactory(new PropertyValueFactory<>("id "));
+    private void cargarDatos() throws IOException {
+        cargarListaUsuarios();
+        columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnaPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         columnaUsuario.setCellValueFactory(new PropertyValueFactory<>("nickname"));
         columnaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         columnaAcceso.setCellValueFactory(new PropertyValueFactory<>("acceso"));
-    }
-    @FXML
-    void refrescarTabla(ActionEvent event) throws IOException {
-        listaUsuarios.clear();
-        Usuario usr = new Usuario();
-        ProcesarDato<Usuario> usuarioProcesarDato = new ProcesarDato<>(usr);
-        usuarioProcesarDato.mostrarDatos();
-        ArrayList<Usuario> lista = usuarioProcesarDato.getLista();
-        lista.forEach(System.out::println);
-        for (int i = 0; i < lista.size(); i++) {
-            listaUsuarios.add(lista.get(i));
-        }
-        tablaUsuariosFX.setItems(listaUsuarios);
+        ObservableList<UsuarioTabla> lista = FXCollections.observableArrayList(
+                listaUsuarios
+        );
+        tablaUsuariosFX.setItems(lista);
     }
     @FXML
     void agregarUsuario(MouseEvent event) throws IOException {
@@ -98,6 +91,7 @@ public class UsuarioController implements Initializable
         ProcesarDato<Usuario> datos = new ProcesarDato<>(user);
         datos.introducirDatos();
         messageTXT.setText("Usuario agregado correctamente !");
+        cargarDatos();
     }
     @FXML
     void editarUsuario(MouseEvent event) throws IOException {
@@ -109,6 +103,7 @@ public class UsuarioController implements Initializable
         ProcesarDato<Usuario> datos = new ProcesarDato<>(user);
         datos.modificarDatos();
         messageTXT.setText("Usuario actualizado correctamente !");
+        cargarDatos();
     }
 
     @FXML
@@ -117,6 +112,7 @@ public class UsuarioController implements Initializable
         ProcesarDato<Usuario> datos = new ProcesarDato<>(us);
         datos.eliminarDatos();
         messageTXT.setText("Usuario eliminado correctamente !");
+        cargarDatos();
     }
     @FXML
     void buscarUsuario(ActionEvent event) throws IOException {
@@ -140,6 +136,22 @@ public class UsuarioController implements Initializable
         emailTXT.setText("");
         accesoTXT.setText("");
         messageTXT.setText("");
+    }
+
+    private void cargarListaUsuarios() throws IOException {
+        Usuario us = new Usuario();
+        ProcesarDato<Usuario> datos = new ProcesarDato<>(us);
+        datos.mostrarDatos();
+        ArrayList<Usuario> usuarios = datos.getLista();
+        for (Usuario p: usuarios) {
+            listaUsuarios.add(new UsuarioTabla(
+                    p.getId(),
+                    p.getPassword(),
+                    p.getNickname(),
+                    p.getEmail(),
+                    p.getAcceso()
+                    ));
+        }
     }
 
 }
