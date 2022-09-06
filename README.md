@@ -2,8 +2,9 @@
 ### Members: 
 - Joel Tates
 - Omar Toro
-## [Video explanation use](https://www.youtube.com/watch?v=q67DFqGd8Bs&t=29s) 
-## [Video technical use](https://www.youtube.com/watch?v=EUx_xYeFQpQ)
+## [Video explanation use](https://youtu.be/1ixXLRVV4Rk) 
+## [Video technical use part 1](https://www.youtube.com/watch?v=ZAQizSgn9q4)
+## [Video technical use part 2](https://youtu.be/wqghRpVaoi0)
 
 ## **Project description✍📔:**
 The system consists of four types of classes from which all others are derived::
