@@ -1,13 +1,19 @@
 package com.example.interfaces;
 
 import com.example.interfaces.clases.Producto;
+import com.example.interfaces.clases.Usuario;
 import com.example.interfaces.utils.ProcesarDato;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -26,6 +32,32 @@ public class CajaController
     private TextField nombreTXT;
     @FXML
     private TextField precioTXT;
+    @FXML
+    private TableColumn<ProductoTabla, Integer> columnaCantidad;
+
+    @FXML
+    private TableColumn<ProductoTabla, Integer> columnaId;
+
+    @FXML
+    private TableColumn<ProductoTabla, String> columnaPd;
+
+    @FXML
+    private TableColumn<ProductoTabla, Double> columnaPrecio;
+    @FXML
+    private TableView<ProductoTabla> tablaProductosTXT;
+    @FXML
+    private TableColumn<?, ?> columaNom;
+    @FXML
+    private TableColumn<?, ?> columaNum;
+    @FXML
+    private TableColumn<?, ?> columnaApe;
+    @FXML
+    private TableColumn<?, ?> columnaCI;
+    @FXML
+    private TableView<?> tablaClientesTXT;
+    private ArrayList<ProductoTabla> listaProductos = new ArrayList<>();
+    private ArrayList<ProductoTabla> listaClientes = new ArrayList<>();
+
     @FXML
     void mostrarVentanaHome(ActionEvent event) {
         controller.show();
@@ -54,10 +86,20 @@ public class CajaController
         nombreTXT.setText("");
         precioTXT.setText("");
         cantidadTXT.setText("0");
+        int longitud = listaProductos.size();
+        listaProductos.remove(longitud - 1);
     }
     @FXML
-    void agregarProductoFactura(ActionEvent event) {
-
+    void agregarProductoFactura(ActionEvent event) throws IOException {
+        columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnaPd.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        ObservableList<ProductoTabla> lista = FXCollections.observableArrayList(
+                listaProductos
+        );
+        tablaProductosTXT.setItems(lista);
+        tablaProductosTXT.setEditable(true);
     }
 
     @FXML
@@ -78,6 +120,12 @@ public class CajaController
             if (id.equals(idTXT.getText())) {
                 nombreTXT.setText(p.getNombre());
                 precioTXT.setText(String.valueOf(p.getPrecio()));
+                listaProductos.add(new ProductoTabla(
+                        p.getId(),
+                        p.getNombre(),
+                        p.getPrecio(),
+                        Integer.parseInt(cantidadTXT.getText())
+                ));
             }
         }
     }
@@ -90,7 +138,6 @@ public class CajaController
             disminuir = cantidad - 1;
         cantidadTXT.setText(String.valueOf(disminuir));
     }
-
     public void setController(HomeController controller) {
         this.controller = controller;
     }

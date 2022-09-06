@@ -85,12 +85,12 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView layoutX="268.0" layoutY="35.0" prefHeight="55.0" prefWidth="390.0" stylesheets="@tableview.css">
+      <TableView fx:id="tablaClientesTXT" layoutX="268.0" layoutY="35.0" prefHeight="55.0" prefWidth="390.0" stylesheets="@tableview.css">
         <columns>
-          <TableColumn prefWidth="80.79998779296875" text="Cedula" />
-          <TableColumn minWidth="0.0" prefWidth="112.79998779296875" text="numero" />
-            <TableColumn prefWidth="103.19998168945312" text="Nombre" />
-            <TableColumn prefWidth="95.2000732421875" text="Apellido" />
+          <TableColumn fx:id="columnaCI" prefWidth="80.79998779296875" text="Cedula" />
+          <TableColumn fx:id="columaNum" minWidth="0.0" prefWidth="112.79998779296875" text="numero" />
+            <TableColumn fx:id="columaNom" prefWidth="103.19998168945312" text="Nombre" />
+            <TableColumn fx:id="columnaApe" prefWidth="95.2000732421875" text="Apellido" />
         </columns>
       </TableView>
       <Button layoutX="320.0" layoutY="316.0" mnemonicParsing="false" onAction="#mostrarVentanaCliente" prefHeight="55.0" prefWidth="126.0" style="-fx-background-color: #8bd160; -fx-background-radius: 50;" text="Cliente" textFill="WHITE">
@@ -103,12 +103,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView layoutX="268.0" layoutY="133.0" prefHeight="154.0" prefWidth="390.0" styleClass="btn" stylesheets="@tableview.css">
+      <TableView fx:id="tablaProductosTXT" layoutX="268.0" layoutY="133.0" prefHeight="154.0" prefWidth="390.0" styleClass="btn" stylesheets="@tableview.css">
          <columns>
-            <TableColumn prefWidth="36.0" text="Id" />
-            <TableColumn minWidth="0.0" prefWidth="203.20001220703125" text="Productos en lista" />
-            <TableColumn prefWidth="76.80001831054688" text="Precio" />
-            <TableColumn prefWidth="72.79998779296875" text="Cantidad" />
+            <TableColumn fx:id="columnaId" prefWidth="36.0" text="Id" />
+            <TableColumn fx:id="columnaPd" minWidth="0.0" prefWidth="203.20001220703125" text="Productos en lista" />
+            <TableColumn fx:id="columnaPrecio" prefWidth="76.80001831054688" text="Precio" />
+            <TableColumn fx:id="columnaCantidad" prefWidth="72.79998779296875" text="Cantidad" />
          </columns>
       </TableView>
    </children>

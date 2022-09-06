@@ -4,11 +4,12 @@ import com.example.interfaces.clases.Cliente;
 import com.example.interfaces.clases.Producto;
 import com.example.interfaces.clases.Usuario;
 import com.example.interfaces.utils.ProcesarDato;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -29,6 +30,23 @@ public class BodegaController
     private Label messageTXT;
     @FXML
     private TextField precioTXT;
+    @FXML
+    private TableColumn<ProductoTabla, Integer> columnaCant;
+
+    @FXML
+    private TableColumn<ProductoTabla, String> columnaFecha;
+
+    @FXML
+    private TableColumn<ProductoTabla, Integer> columnaID;
+
+    @FXML
+    private TableColumn<ProductoTabla, Double> columnaPD;
+    @FXML
+    private TableView<ProductoTabla> tablaStockTXT;
+    private ArrayList<ProductoTabla> listaProductos = new ArrayList<>();
+    private ArrayList<StockTabla> listaStock = new ArrayList<>();
+
+
     @FXML
     void agregarProductos(MouseEvent event) throws IOException {
         String nombre = nombreTXT.getText();
@@ -86,10 +104,6 @@ public class BodegaController
         messageTXT.setText("Producto actualizado correctamente !");
     }
     @FXML
-    void refrescarTabla(MouseEvent event) {
-
-    }
-    @FXML
     void borrarDatos(MouseEvent event) {
         idTXT.setText("");
         nombreTXT.setText("");
@@ -101,6 +115,48 @@ public class BodegaController
     void mostrarVentanaHome(ActionEvent event) {
         controller.show();
         primaryStage.close();
+    }
+    @FXML
+    void mostrarProductos(ActionEvent event) throws IOException {
+        cargarListaProductos();
+        columnaID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnaPD.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaCant.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        ObservableList<ProductoTabla> lista = FXCollections.observableArrayList(
+                listaProductos
+        );
+        tablaStockTXT.setItems(lista);
+        tablaStockTXT.setEditable(true);
+    }
+    @FXML
+    void mostrarStockIngreso(ActionEvent event) {
+        columnaID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnaPD.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaCant.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        columnaFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        ObservableList<StockTabla> lista = FXCollections.observableArrayList(
+                listaStock
+        );
+        //tablaStockTXT.setItems(lista);
+        tablaStockTXT.setEditable(true);
+    }
+
+    @FXML
+    void mostrarStockSalida(ActionEvent event) {
+
+    }
+    private void cargarListaProductos() throws IOException {
+        Producto pd = new Producto();
+        ProcesarDato<Producto> datos = new ProcesarDato<>(pd);
+        datos.mostrarDatos();
+        ArrayList<Producto> productos = datos.getLista();
+        for (Producto p: productos) {
+            listaProductos.add(new ProductoTabla(
+                    p.getId(),
+                    p.getNombre(),
+                    p.getCantidad()
+            ));
+        }
     }
 
     public void setController(HomeController controller) {
