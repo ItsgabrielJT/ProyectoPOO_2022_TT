@@ -2,7 +2,7 @@
 ### Members: 
 - Joel Tates
 - Omar Toro
-## [Video explanation use](https://www.youtube.com/watch?v=q67DFqGd8Bs&t=29s) 
+## [Video explanation use](https://youtu.be/1ixXLRVV4Rk) 
 ## [Video technical use](https://www.youtube.com/watch?v=EUx_xYeFQpQ)
 
 ## **Project description✍📔:**
